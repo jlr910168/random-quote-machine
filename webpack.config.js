@@ -1,14 +1,16 @@
 const { resolve } = require('path');
+const merge = require('webpack-merge');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const mode = process.env.NODE_ENV;
 const paths = {
   src: resolve('./src'),
   dist: resolve('./dist'),
   html: resolve('./src/index.html'),
 };
 
-module.exports = {
+const common = {
   entry: {
     app: paths.src,
   },
@@ -40,3 +42,18 @@ module.exports = {
     }),
   ],
 };
+
+const development = {
+  mode: 'development',
+  devtool: 'inline-source-map',
+};
+const production = {
+  mode: 'production',
+  devtool: 'source-map',
+};
+
+if (mode === 'development') {
+  module.exports = merge(common, development);
+} else if (mode === 'production') {
+  module.exports = merge(common, production);
+}
