@@ -1,7 +1,4 @@
-const component = (text) => {
-  const elem = document.createElement('div');
-  elem.innerHTML = text;
-  return elem;
-};
+import hello from './components/hello';
+import './style.css';
 
-document.body.appendChild(component('Hello Babel'));
+document.body.appendChild(hello('Hello Babel'));

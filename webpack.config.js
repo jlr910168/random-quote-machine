@@ -20,7 +20,15 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
+        include: paths.src,
         use: 'babel-loader',
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader',
+        ],
       },
     ],
   },
@@ -28,6 +36,7 @@ module.exports = {
     new CleanWebpackPlugin([paths.dist]),
     new HtmlWebpackPlugin({
       template: paths.html,
+      title: 'Random Quote Machine',
     }),
   ],
 };
