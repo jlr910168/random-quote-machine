@@ -2,12 +2,20 @@ const { resolve } = require('path');
 const merge = require('webpack-merge');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const mode = process.env.NODE_ENV;
 const paths = {
   src: resolve('./src'),
   dist: resolve('./dist'),
   html: resolve('./src/index.html'),
+};
+
+const cssLoader = {
+  test: /\.css$/,
+  use: mode === 'development'
+    ? ['style-loader', 'css-loader']
+    : [MiniCssExtractPlugin.loader, 'css-loader'],
 };
 
 const common = {
@@ -25,20 +33,13 @@ const common = {
         include: paths.src,
         use: 'babel-loader',
       },
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader',
-        ],
-      },
+      cssLoader,
     ],
   },
   plugins: [
     new CleanWebpackPlugin([paths.dist]),
     new HtmlWebpackPlugin({
       template: paths.html,
-      title: 'Random Quote Machine',
     }),
   ],
 };
@@ -47,9 +48,15 @@ const development = {
   mode: 'development',
   devtool: 'inline-source-map',
 };
+
 const production = {
   mode: 'production',
   devtool: 'source-map',
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'style.css',
+    }),
+  ],
 };
 
 if (mode === 'development') {
