@@ -2,18 +2,32 @@ const { resolve } = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const paths = {
+  src: resolve('./src'),
+  dist: resolve('./dist'),
+  html: resolve('./src/index.html'),
+};
+
 module.exports = {
   entry: {
-    app: resolve('./src/'),
+    app: paths.src,
   },
   output: {
-    path: resolve('./dist'),
+    path: paths.dist,
     filename: '[name].bundle.js',
   },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        use: 'babel-loader',
+      },
+    ],
+  },
   plugins: [
-    new CleanWebpackPlugin([resolve('./dist')]),
+    new CleanWebpackPlugin([paths.dist]),
     new HtmlWebpackPlugin({
-      template: resolve('./src/index.html'),
+      template: paths.html,
     }),
   ],
 };
