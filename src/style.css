@@ -1,3 +1,21 @@
-body {
-  background-color: #ccc;
+html {
+  font-size: 16px;
+}
+
+#text {
+
+}
+
+#author {
+
+}
+
+#new-quote {
+  display: block;
+  padding: 5px;
+}
+
+#tweet-quote {
+  display: block;
+  padding: 5px;
 }
