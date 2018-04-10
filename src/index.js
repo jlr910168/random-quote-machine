@@ -14,9 +14,9 @@ const randomQuote = () => {
 const getQuote = () => {
   const { text, author } = randomQuote();
   quoteText.innerHTML = text;
-  quoteAuthor.innerHTML = author;
+  quoteAuthor.innerHTML = `- ${author}`;
   tweetQuote.href =
-    `http://twitter.com/intent/tweet?text=${text}%0A%20%2D%20${author}`;
+    `http://twitter.com/intent/tweet?text=${encodeURIComponent(text)}%0A%20%2D%20${encodeURIComponent(author)}`;
 };
 
 window.addEventListener('load', getQuote);
