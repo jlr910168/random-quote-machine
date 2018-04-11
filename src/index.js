@@ -6,18 +6,29 @@ const quoteText = document.getElementById('text');
 const quoteAuthor = document.getElementById('author');
 const tweetQuote = document.getElementById('tweet-quote');
 
-const randomQuote = () => {
+const localQuote = () => {
   const rand = max => Math.floor(Math.random() * max);
   return quotes[rand(quotes.length)];
 };
 
-const getQuote = () => {
-  const { text, author } = randomQuote();
-  quoteText.innerHTML = text;
-  quoteAuthor.innerHTML = `- ${author}`;
-  tweetQuote.href =
-    `http://twitter.com/intent/tweet?text=${encodeURIComponent(text)}%0A%20%2D%20${encodeURIComponent(author)}`;
-};
+function setTweet(text, author) {
+  tweetQuote.href = `http://twitter.com/intent/tweet?text=${encodeURIComponent(text)}%0A${encodeURIComponent(author)}`;
+}
 
-window.addEventListener('load', getQuote);
-newQuote.addEventListener('click', getQuote);
+function logQuote() {
+  fetch('https://talaikis.com/api/quotes/random/')
+    .then(res => res.json())
+    .then((json) => {
+      quoteText.textContent = `“${json.quote}”`;
+      quoteAuthor.textContent = `- ${json.author}`;
+      setTweet(quoteText.textContent, quoteAuthor.textContent);
+    }).catch(() => {
+      const { quote, author } = localQuote();
+      quoteText.textContent = quote;
+      quoteAuthor.textContent = `- ${author}`;
+      setTweet(quoteText.textContent, quoteAuthor.textContent);
+    });
+}
+
+window.addEventListener('load', logQuote);
+newQuote.addEventListener('click', logQuote);
