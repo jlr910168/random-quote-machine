@@ -11,24 +11,26 @@ const localQuote = () => {
   return quotes[rand(quotes.length)];
 };
 
-function setTweet(text, author) {
+function setTweetHref(text, author) {
   tweetQuote.href = `http://twitter.com/intent/tweet?text=${encodeURIComponent(text)}%0A${encodeURIComponent(author)}`;
 }
 
-function logQuote() {
+function setQuote(quoteObj) {
+  const { quote, author } = quoteObj;
+  quoteText.textContent = `“${quote}”`;
+  quoteAuthor.textContent = `- ${author}`;
+  setTweetHref(quoteText.textContent, quoteAuthor.textContent);
+}
+
+function displayQuote() {
   fetch('https://talaikis.com/api/quotes/random/')
     .then(res => res.json())
     .then((json) => {
-      quoteText.textContent = `“${json.quote}”`;
-      quoteAuthor.textContent = `- ${json.author}`;
-      setTweet(quoteText.textContent, quoteAuthor.textContent);
+      setQuote(json);
     }).catch(() => {
-      const { quote, author } = localQuote();
-      quoteText.textContent = `“${quote}”`;
-      quoteAuthor.textContent = `- ${author}`;
-      setTweet(quoteText.textContent, quoteAuthor.textContent);
+      setQuote(localQuote());
     });
 }
 
-window.addEventListener('load', logQuote);
-newQuote.addEventListener('click', logQuote);
+window.addEventListener('load', displayQuote);
+newQuote.addEventListener('click', displayQuote);
