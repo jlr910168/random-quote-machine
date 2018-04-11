@@ -13,9 +13,18 @@ const paths = {
 
 const cssLoader = {
   test: /\.css$/,
-  use: mode === 'development'
-    ? ['style-loader', 'css-loader']
-    : [MiniCssExtractPlugin.loader, 'css-loader'],
+  use: mode === 'development' ?
+    ['style-loader', 'css-loader'] :
+    [
+      MiniCssExtractPlugin.loader,
+      {
+        loader: 'css-loader',
+        options: {
+          minimize: true,
+          sourceMap: true,
+        },
+      },
+    ],
 };
 
 const common = {
