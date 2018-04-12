@@ -43,28 +43,24 @@ html, body {
   transform: translate(-50%, -50%);
   /* borders style */
   background-color: var(--elem-background);
-  border-top:    var(--tl-main);
-  border-left:   var(--tl-main);
-  border-right:  var(--br-second);
-  border-bottom: var(--br-second);
-  border-style: solid;
-  border-width: 1px;
+  border-top: 1px solid var(--tl-main);
+  border-left: 1px solid var(--tl-main);
+  border-right: 1px solid var(--br-second);
+  border-bottom: 1px solid var(--br-second);
 }
 
 /* outside border for #quote-box */
 #quote-box:after {
   content: '';
   position: absolute;
-  top:    -2px;
-  left:   -2px;
+  top: -2px;
+  left: -2px;
+  right: -2px;
   bottom: -2px;
-  right:  -2px;
-  border-top:    var(--tl-second);
-  border-left:   var(--tl-second);
-  border-right:  var(--br-main);
-  border-bottom: var(--br-main);
-  border-style: solid;
-  border-width: 1px;
+  border-top: 1px solid var(--tl-second);
+  border-left: 1px solid var(--tl-second);
+  border-right: 1px solid var(--br-main);
+  border-bottom: 1px solid var(--br-main);
   z-index: -2;
 }
 
@@ -73,82 +69,70 @@ html, body {
   padding: 3px;
   background-color: #fff;
   position: relative;
-  border-top:    var(--br-main);
-  border-left:   var(--br-main);
-  border-right:  var(--tl-second);
-  border-bottom: var(--tl-second);
-  border-style: solid;
-  border-width: 1px;
+  border-top: 1px solid var(--br-main);
+  border-left: 1px solid var(--br-main);
+  border-right: 1px solid var(--tl-second);
+  border-bottom: 1px solid var(--tl-second);
 }
 
 #text-block:after {
   content: '';
   position: absolute;
-  top:    -2px;
-  left:   -2px;
+  top: -2px;
+  left: -2px;
+  right: -2px;
   bottom: -2px;
-  right:  -2px;
-  border-top:    var(--br-second);
-  border-left:   var(--br-second);
-  border-right:  var(--tl-main);
-  border-bottom: var(--tl-main);
-  border-style: solid;
-  border-width: 1px;
+  border-top: 1px solid var(--br-second);
+  border-left: 1px solid var(--br-second);
+  border-right: 1px solid var(--tl-main);
+  border-bottom: 1px solid var(--tl-main);
 }
 
 button {
+  margin: 1px;
   padding: 2px;
-  margin: 5px;
   outline: none;
   position: relative;
   background-color: var(--elem-background);
-  border-top:    var(--tl-second);
-  border-left:   var(--tl-second);
-  border-right:  var(--br-second);
-  border-bottom: var(--br-second);
-  border-style: solid;
-  border-width: 1px;
+  border-top: 1px solid var(--tl-second);
+  border-left: 1px solid var(--tl-second);
+  border-right: 1px solid var(--br-second);
+  border-bottom: 1px solid var(--br-second);
   z-index: 0;
 }
 
 button:after {
   content: '';
   position: absolute;
-  top:    -2px;
-  left:   -2px;
+  top: -2px;
+  left: -2px;
+  right: -2px;
   bottom: -2px;
-  right:  -2px;
-  border-top:    var(--tl-main);
-  border-left:   var(--tl-main);
-  border-right:  var(--br-main);
-  border-bottom: var(--br-main);
-  border-style: solid;
-  border-width: 1px;
+  border-top: 1px solid var(--tl-main);
+  border-left: 1px solid var(--tl-main);
+  border-right: 1px solid var(--br-main);
+  border-bottom: 1px solid var(--br-main);
   z-index: -1;
 }
 
 button:active {
-  border-top:    var(--br-second);
-  border-left:   var(--br-second);
-  border-right:  var(--tl-second);
-  border-bottom: var(--tl-second);
-  border-style: solid;
-  border-width: 1px;
+  border-top: 1px solid var(--br-second);
+  border-left: 1px solid var(--br-second);
+  border-right: 1px solid var(--tl-second);
+  border-bottom: 1px solid var(--tl-second);
 }
 
 button:active:after {
   content: '';
   position: absolute;
-  top:    -2px;
-  left:   -2px;
+  top: -2px;
+  left: -2px;
+  right: -2px;
   bottom: -2px;
-  right:  -2px;
-  border-top:    var(--br-main);
-  border-left:   var(--br-main);
-  border-right:  var(--tl-main);
-  border-bottom: var(--tl-main);
-  border-style: solid;
-  border-width: 1px;
+  border-top: 1px solid var(--br-main);
+  border-left: 1px solid var(--br-main);
+  border-right: 1px solid var(--tl-main);
+  border-bottom: 1px solid var(--tl-main);
 }
 
 button:hover {
